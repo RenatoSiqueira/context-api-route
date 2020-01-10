@@ -1,19 +1,14 @@
-import React, { Component } from 'react'
+import React, { useContext } from 'react'
+import { RouteContext } from './ContextB'
 
-import ContextB from './ContextB'
-
-export default class src extends Component {
-
-  render() {
-    
-    return(
-      <ContextB.Consumer>
-        { 
-         name => {
-           console.log(name)
-         } 
-        }
-      </ContextB.Consumer>
-    )
-  }
+const Page3 = () => {
+  const { status, alterarStatus } = useContext(RouteContext)
+  return (
+    <div>
+      Page 3: {JSON.stringify(status)}
+      <button onClick={() => alterarStatus('name')(new Date())}>Add New Value</button>
+    </div>
+  )
 }
+
+export default Page3
